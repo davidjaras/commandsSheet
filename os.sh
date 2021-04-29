@@ -106,6 +106,11 @@ openssl pkcs12 -info -nodes -in yourfilename.p12
 ## If you want to use a password to encrypt the key file, you must remove the -nodes flag
 ## You can add -nocerts to only output the private key or add -nokeys to only output the certificates.
 openssl pkcs12 -in path.p12 -out newfile.pem -nodes
+# Convert P12 to pem with only the crt
+openssl pkcs12 -in <file-name>.p12 -out <new-file>.crt.pem -clcerts -nokeys
+
+# Convert P12 to pem with only the private key
+openssl pkcs12 -in <file-name>.p12 -out <new-file>.key.pem -nocerts -nodes
 
 # Convert DER to PEM
 openssl x509 -inform der -in certificate.cer -out certificate.pem
