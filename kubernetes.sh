@@ -187,6 +187,9 @@ kubectl edit svc/docker-registry
 # Use an alternative editor
 KUBE_EDITOR="nano" kubectl edit svc/docker-registry   
 
+# Edit deployment settings
+kubectl edit deployment/[pod]
+
 
 ## Namespaces
 kubectl config set-context $(kubectl config current-context) --namespace=my-namespace
@@ -259,6 +262,9 @@ kubectl exec my-pod -- ls /
 
 # Run command in existing pod (multi-container case)
 kubectl exec my-pod -c my-container -- ls /         
+
+# Run bash inside a pod
+kubectl exec --stdin --tty [pod] -- /bin/bash
 
 # Attach to Running Container
 kubectl attach my-pod -i                            
